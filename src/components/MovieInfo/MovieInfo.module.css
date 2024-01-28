@@ -1,0 +1,20 @@
+.movieContainer {
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  background-color: rgb(159, 249, 249);
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+.movieImg {
+  width: 300px;
+  height: 400px;
+}
+
+/* .movieDetails {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */

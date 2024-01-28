@@ -23,21 +23,8 @@ export const fetchTrending = async () => {
   }
 };
 
-// export const fetchMovieDetails = async movieId => {
-//   try {
-//     const movieDetails = await axios.get(
-//       `${baseURL}/movie/${movieId}?api_key=${key}&language=en-US`
-//     );
-//     return movieDetails;
-//   } catch (error) {
-//     console.error('Error fetching movie details', error);
-//     throw error;
-//   }
-// };
 export const fetchMovieDetails = async movieId => {
   const options = {
-    method: 'GET',
-    url: `${baseURL}/movie/${movieId}`,
     params: {
       language: 'en-US',
     },
@@ -46,11 +33,45 @@ export const fetchMovieDetails = async movieId => {
       Authorization: `Bearer ${AUTH_KEY}`,
     },
   };
+
   try {
-    const response = await axios.get(options);
-    console.log(response.data);
+    const response = await axios.get(`${baseURL}/movie/${movieId}`, options);
     return response.data;
   } catch (error) {
     console.log('Error during fetch:', error);
+    throw error;
+  }
+};
+
+export const getSearchMovies = async query => {
+  try {
+    const result = await axios.get(
+      `${baseURL}${endUrl.wordSearch}?api_key=${key}&page=1&query=${query}&language=en-US&include_adult=false`
+    );
+    return result.data.results;
+  } catch (error) {
+    console.error('Error:', error.message);
+  }
+};
+
+export const searchForCast = async movieId => {
+  try {
+    const result = await axios.get(
+      `${baseURL}${endUrl.details}${movieId}${endUrl.credits}?api_key=${key}&page=1&language=en-US&include_adult=false`
+    );
+    return result.data.cast;
+  } catch (error) {
+    console.error('Error:', error.message);
+  }
+};
+
+export const searchReviews = async movieId => {
+  try {
+    const result = await axios.get(
+      `${baseURL}${endUrl.details}${movieId}${endUrl.reviews}?api_key=${key}&page=1&language=en-US&include_adult=false`
+    );
+    return result.data.results;
+  } catch (error) {
+    console.error('Error:', error.message);
   }
 };

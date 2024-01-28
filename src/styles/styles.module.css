@@ -1,0 +1,23 @@
+.goBack {
+  margin: 20px 0 20px 20px;
+  color: aliceblue;
+  background-color: rgb(117, 100, 76);
+  font-weight: 400;
+  font-size: 13px;
+  height: 15px;
+  width: 74px;
+  border-radius: 20px;
+  border: 1px solid;
+  cursor: pointer;
+  padding: 15px;
+  text-decoration: none;
+}
+.goBackContainer {
+  display: flex;
+  text-align: center;
+}
+.goBack:hover,
+.goBack:focus {
+  color: rgb(104, 103, 103);
+  background-color: aliceblue;
+}
